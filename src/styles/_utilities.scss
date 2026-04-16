@@ -1,0 +1,59 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-size": (
+  rfs: true,
+  responsive: true,
+  property: font-size,
+  class: fs,
+  values: $font-sizes
+),
+"position": (
+  property: position,
+   responsive: true,
+  values: static relative absolute fixed sticky
+),
+"top": (
+  property: top,
+   responsive: true,
+  values: $position-values
+),
+"bottom": (
+  property: bottom,
+   responsive: true,
+  values: $position-values
+),
+"start": (
+  property: left,
+  class: start,
+   responsive: true,
+  
+  values: $position-values
+),
+"end": (
+  property: right,
+  class: end,
+   responsive: true,
+  values: $position-values
+),
+"translate-middle": (
+  property: transform,
+  class: translate-middle,
+   responsive: true,
+  values: (
+    null: translate(-50%, -50%),
+    x: translateX(-50%),
+    y: translateY(-50%),
+  )
+),
+  )
+);
+
+@import "../../node_modules/bootstrap/scss/utilities/api";

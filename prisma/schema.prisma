@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EMPLOYEE
+}
+
+model User {
+  id              Int @id @default(autoincrement())
+  firstname       String
+  lastname        String
+  phone           String
+  email           String   @unique
+  profileImg      String?
+  dob             DateTime?
+  gender          String?
+  address         String?
+  country         String?
+  password        String
+  role            Role     @default(EMPLOYEE)
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  // Only Employee relation
+  employee        Employee?
+}
+
+model Employee {
+  id          Int       @id @default(autoincrement())
+  userId      Int       @unique
+  position    String?
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clients     ClientEmployee[]
+  favorites   Favorite[]
+}
+
+model Client {
+  id          Int       @id @default(autoincrement())
+  name        String
+  icon        String?
+  created_at  DateTime  @default(now())
+
+  employees   ClientEmployee[]
+  clientTools ClientTool[]
+  favorites   Favorite[]
+}
+
+model ClientEmployee {
+  id          Int      @id @default(autoincrement())
+  clientId    Int
+  employeeId  Int
+
+  client      Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@unique([clientId, employeeId])
+}
+model Tool {
+  id          Int         @id @default(autoincrement())
+  title       String
+  created_at  DateTime    @default(now())
+
+  // Relations
+  links       ToolLink[]
+  clients     ClientTool[]
+}
+
+model ToolLink {
+  id        Int     @id @default(autoincrement())
+  toolId    Int
+  title     String
+  url       String
+  icon      String?   // store file path / cloud url
+
+  tool      Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  favorites   Favorite[]
+}
+
+model ClientTool {
+  id        Int     @id @default(autoincrement())
+  clientId  Int
+  toolId    Int
+
+  client    Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  tool      Tool    @relation(fields: [toolId], references: [id], onDelete: Cascade)
+ 
+  @@unique([clientId, toolId]) // prevent duplicate mapping
+}
+
+model Favorite {
+  id         Int      @id @default(autoincrement())
+  employeeId Int
+  clientId   Int
+  toolLinkId Int
+  createdAt  DateTime @default(now())
+
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  client     Client   @relation(fields: [clientId], references: [id])
+  toolLink   ToolLink @relation(fields: [toolLinkId], references: [id])
+
+  @@unique([employeeId, clientId, toolLinkId])
+}

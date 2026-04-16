@@ -1,0 +1,352 @@
+*body {
+	background-color: #fff;
+	color: black;
+}
+
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, .45);
+	backdrop-filter: blur(1px);
+	display: none;
+	z-index: 1030;
+}
+
+.overlay.show {
+	display: block;
+}
+
+.topbar,
+.sidebar,
+.logo-area {
+	background: #020f43;
+	color: #fff;
+}
+
+.sidebar {
+	width: 240px;
+	transition: width .3s, left .3s;
+	border-right: 1px solid $gray-200;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding-top: 60px;
+	z-index: 1030;
+
+	.nav-link {
+		color: #fff;
+		padding: 8px 10px;
+		display: flex;
+		align-items: center;
+		font-size: 16px;
+		font-weight: 400;
+		gap: 12px;
+		white-space: nowrap;
+		margin: 1px 12px;
+		border-radius: 8px;
+
+		&:hover {
+			color: $primary;
+			background-color: rgba($primary, 0.095);
+		}
+
+		&.active {
+			color: $primary;
+			background-color: rgba($primary, 0.095);
+		}
+
+		.ti {
+			font-size: 18px;
+		}
+	}
+
+	.nav-text {
+		transition: opacity .2s;
+	}
+
+	.logo-area {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 60px;
+		width: 100%;
+		background: #020f43;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding-left: 17px;
+		color: $gray-800;
+		border-bottom: 1px solid $gray-200;
+	}
+}
+
+.sidebar.collapsed {
+	width: 60px;
+
+	.nav-link {
+		margin: 0 0px;
+		background-color: transparent;
+		padding: 8px 18px;
+	}
+
+	.nav-text {
+		display: none;
+	}
+
+	.logo-text {
+		display: none;
+	}
+}
+
+.topbar {
+	height: 60px;
+	margin-left: 240px;
+	transition: margin-left .3s;
+	background-color: #020f43 !important;
+	color: #fff !important;
+}
+
+.topbar.full {
+	margin-left: 60px;
+}
+
+.content {
+	margin-left: 240px;
+	transition: margin-left .3s;
+	padding: 20px;
+}
+
+.content.full {
+	margin-left: 60px;
+}
+
+.react-tel-input .form-control {
+	width: 100% !important;
+	height: 38px;
+}
+
+@media (max-width: 992px) {
+	.sidebar {
+		left: -240px;
+	}
+
+	.sidebar.mobile-show {
+		left: 0;
+	}
+
+	.topbar {
+		margin-left: 0 !important;
+		width: 100% !important;
+	}
+
+	.content {
+		margin-left: 0 !important;
+	}
+}
+
+.admin-form,
+.employee-form {
+	background: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 4px 25px 0px #0000001A;
+}
+
+.admin-login-form,
+.employee-login-form {
+	gap: 20px;
+	padding: 30px;
+	color: #fff;
+	display: block;
+	background: linear-gradient(90deg, #121929 0%, #3f578f 100%) !important;
+}
+
+.admin-login-form .item {
+	background: #ffffff;
+	border: 1px solid #D9D9D9;
+	padding: 10px 20px;
+	border-radius: 7px;
+	font-size: 18px;
+	box-shadow: 0px 0px 10px 0px #0000001A;
+	font-weight: 600;
+	height: 58px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.admin-login-form .vertcl {
+	display: flex;
+	flex-direction: column;
+}
+
+.multi-select {
+	position: relative;
+	width: 200px;
+}
+
+.select-box {
+	border: 1px solid #ccc;
+	padding: 6px 10px;
+	border-radius: 4px;
+	background: white;
+	cursor: pointer;
+}
+
+.options-box {
+	display: none;
+	position: absolute;
+	width: 100%;
+	background: white;
+	border: 1px solid #ccc;
+	margin-top: 2px;
+	z-index: 999;
+}
+
+.option {
+	display: block;
+	padding: 5px;
+}
+
+.table-responsive {
+	overflow: visible !important;
+
+}
+
+.dropdown-menu {
+	z-index: 9999 !important;
+}
+
+.card {
+	overflow: visible !important;
+}
+
+.allclients {
+	display: flex;
+	width: 100%;
+}
+
+.allclients-title {
+	width: 10%;
+	margin-bottom: 10px;
+}
+
+.managetoollinks {
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	padding: 25px;
+	margin-top: 20px;
+}
+
+.managetool-header {
+	display: flex;
+	width: 100%;
+}
+
+.managetool-header h1 {
+	width: 20%;
+}
+
+.input-button-toollinks {
+	width: 80%;
+	display: flex;
+	gap: 10px;
+}
+
+.managetool-header .input-button-toollinks input {
+	width: 30%;
+}
+
+.managetool-header .input-button-toollinks button {
+	width: 5%
+}
+
+.toolinfo {
+	width: 100%;
+}
+
+.toolinfo div {
+	display: flex;
+}
+
+.toolinfo div p {
+	width: 20%;
+}
+
+.toolinfo div input {
+	width: 50%;
+}
+
+.toolinfo-container {
+	margin-top: 20px;
+}
+
+.tool-box {
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 10px;
+	position: relative;
+}
+
+.remove-btn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background: red;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.remove-small {
+	position: absolute;
+	right: 0;
+	background: red;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.tool-info-row {
+	position: relative;
+	margin-top: 15px;
+	border-top: 1px solid #eee;
+	padding-top: 10px;
+	
+}
+.container .client-dropdown{
+	width: 100%;
+	display: flex;
+}
+.container .client-dropdown label{
+	width: 15%;
+}
+.dropdown-box {
+	border: 1px solid #ccc;
+	padding: 10px;
+	width: 40%;
+	display: inline-flex;
+}
+
+.dropdown-list {
+    display: grid;
+    z-index: 10;
+    background: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    padding: 12px;
+    border-radius: 5px;
+	margin: 35px 0px; width: 30%
+}
+.dropdown-box .dropdown-list label{
+    margin: 5px 0px;
+	width: 50%
+}
+.goldenStar{
+	color: #ffc107;
+}
+@import "./avatar";
+@import "./button";
+@import "./icon-shape";
+@import "./utilities";
