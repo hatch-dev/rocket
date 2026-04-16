@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   }
 
   const token = await signAdminToken(user.id);
-  const res = NextResponse.json({ ok: true, name: user.name });
+  const res = NextResponse.json({ ok: true, name: user });
   res.cookies.set(COOKIE_ADMIN, token, {
     ...cookieBase,
     maxAge: 60 * 60 * 24 * 7,
