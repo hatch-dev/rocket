@@ -30,6 +30,7 @@ model User {
 
   // Only Employee relation
   employee        Employee?
+  chats           Chat[]
 }
 
 model Employee {
@@ -47,12 +48,11 @@ model Client {
   name        String
   icon        String?
   created_at  DateTime  @default(now())
-
   employees   ClientEmployee[]
   clientTools ClientTool[]
   favorites   Favorite[]
+  chats       Chat[] 
 }
-
 model ClientEmployee {
   id          Int      @id @default(autoincrement())
   clientId    Int
@@ -107,4 +107,25 @@ model Favorite {
   toolLink   ToolLink @relation(fields: [toolLinkId], references: [id])
 
   @@unique([employeeId, clientId, toolLinkId])
+}
+
+model Chat {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clientId    Int?
+  client      Client?  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  type        String
+  createdAt   DateTime @default(now())
+  messages    Message[]
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  chatId    Int
+  sender    String
+  content   String
+  createdAt DateTime @default(now())
+
+  chat Chat @relation(fields: [chatId], references: [id])
 }

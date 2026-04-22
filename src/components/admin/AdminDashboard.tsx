@@ -59,21 +59,21 @@ export function AdminDashboard() {
             <div className="col-lg-4 col-12">
               <div className="card p-4 bg-primary bg-opacity-10 border border-primary border-opacity-25 rounded-2">
                 <h2 className="fs-6">Total Employees</h2>
-                <h3>{loading ? "..." : counts.employees}</h3>
+                <h3 className="d-flex gap-2 icon-count1"> <i className="fa-solid fa-user"></i> <span className="mr-3">{loading ? "..." : counts.employees}</span></h3>
               </div>
             </div>
 
             <div className="col-lg-4 col-12">
               <div className="card p-4 bg-success bg-opacity-10 border border-success border-opacity-25 rounded-2">
                 <h2 className="fs-6">Total Clients</h2>
-                <h3>{loading ? "..." : counts.clients}</h3>
+                <h3 className="d-flex gap-2 icon-count2"><i className="fa-solid fa-user-group"></i><span className="mr-3">{loading ? "..." : counts.clients}</span></h3>
               </div>
             </div>
 
             <div className="col-lg-4 col-12">
               <div className="card p-4 bg-info bg-opacity-10 border border-info border-opacity-25 rounded-2">
                 <h2 className="fs-6">Total Tools</h2>
-                <h3>{loading ? "..." : counts.tools}</h3>
+                <h3 className="d-flex gap-2 icon-count3"><i className="fa-solid fa-wrench"></i><span >{loading ? "..." : counts.tools}</span></h3>
               </div>
             </div>
 

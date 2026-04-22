@@ -75,7 +75,7 @@ export function RocketChatWidget() {
       {open && (
         <div className="chat-popup">
           <div className="chat-popup-header">
-            <span>🚀 Rocket AI</span>
+            <span> Rocket AI</span>
             <button onClick={() => setOpen(false)}>✕</button>
           </div>
 

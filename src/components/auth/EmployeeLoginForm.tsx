@@ -42,7 +42,7 @@ export function EmployeeLoginForm() {
   }
 
   return (
-    <div className="container d-flex align-items-center justify-content-center min-vh-100">
+    <div className="container d-flex align-items-center employee-login-container justify-content-center min-vh-100">
       <div className="employee-form " style={{ maxWidth: 420, width: "100%" }}>
         <div className="employee-login-form">
           <div className="text-center mb-3">
@@ -50,14 +50,12 @@ export function EmployeeLoginForm() {
               <Image
                 src="/assets/images/rocket-logo.png"
                 alt=""
-                width={150}
-                height={38}
+                width={200}
+                height={50}
               />
 
             </Link>
-            <p className="small text-uppercase text-primary fw-semibold mb-2">
-               Login
-            </p>
+            
             <h1 className="card-title mb-3 h5">Sign in to your account</h1>
 
           </div>

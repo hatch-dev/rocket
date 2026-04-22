@@ -42,30 +42,20 @@ export function AdminLoginForm() {
   }
 
   return (
-    <div className="container d-flex align-items-center justify-content-center min-vh-100">
+    <div className="container d-flex align-items-center admin-login-container justify-content-center min-vh-100">
       <div className="admin-form" style={{ maxWidth: 420, width: "100%" }}>
         <div className="admin-login-form">
           <div className="text-center mb-3">
-            <Link href="/" className="mb-4 d-inline-flex align-items-center">
-              {/* <Image
-                src="/images/"
-                alt=""
-                width={36}
-                height={36}
-              /> */}
-              <span className="ms-2">
+           <span className="ms-2">
                 <Image
                   src="/assets/images/rocket-logo.png"
-                  alt="InApp Inventory"
-                  width={120}
-                  height={28}
+                  alt="Rocket AI"
+                  width={200}
+                  height={50}
                 />
               </span>
-            </Link>
-            <p className="small text-uppercase text-primary fw-semibold mb-2">
-              Administrator
-            </p>
-            <h1 className="card-title mb-3 h5">Sign in to the admin account</h1>
+            
+            <h1 className="card-title mb-3 h5 mt-4">Sign in to the admin account</h1>
             
           </div>
 

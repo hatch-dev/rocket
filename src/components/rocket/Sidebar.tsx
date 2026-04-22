@@ -39,6 +39,7 @@ export function RocketSidebar({ clients, employee, activeClient, setActiveClient
         ) : (
           <li>No client is assigned</li>
         )}
+        <li onClick={() => router.push('/employee/chat')}>Chat</li>
       </ul>
 
       <div className="sidebar-employee-bottom">

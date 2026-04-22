@@ -6,10 +6,10 @@ import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "InApp Inventory Dashboard",
-    template: "%s | InApp Inventory",
+    default: "Rocket AI",
+    template: "%s | Rocket AI",
   },
-  description: "Inventory dashboard",
+  description: "Rocket AI",
   icons: {
     apple: "/images/favicon_io/apple-touch-icon.png",
     icon: [

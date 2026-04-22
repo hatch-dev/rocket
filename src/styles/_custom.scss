@@ -22,7 +22,9 @@
 	background: #020f43;
 	color: #fff;
 }
-
+.nav-link.active i{
+	color: $primary;
+}
 .sidebar {
 	width: 240px;
 	transition: width .3s, left .3s;
@@ -48,12 +50,12 @@
 
 		&:hover {
 			color: $primary;
-			background-color: rgba($primary, 0.095);
+			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgb(9 9 121 / 84%) 0%, rgba(6, 73, 163, 0.7) 11%, rgb(255 81 0 / 53%) 99%);
 		}
 
 		&.active {
 			color: $primary;
-			background-color: rgba($primary, 0.095);
+			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgb(9 9 121 / 84%) 0%, rgba(6, 73, 163, 0.7) 11%, rgb(255 81 0 / 53%) 99%);
 		}
 
 		.ti {
@@ -147,7 +149,7 @@
 
 .admin-form,
 .employee-form {
-	background: #fff;
+	background: transparent;
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 0px 4px 25px 0px #0000001A;
@@ -159,7 +161,10 @@
 	padding: 30px;
 	color: #fff;
 	display: block;
-	background: linear-gradient(90deg, #121929 0%, #3f578f 100%) !important;
+	background: linear-gradient(130deg,
+			rgba(15, 23, 42, 0.6) 5%,
+			rgba(30, 58, 138, 0.6) 45%,
+			rgba(255, 106, 61, 0.6) 150%);
 }
 
 .admin-login-form .item {
@@ -211,7 +216,6 @@
 
 .table-responsive {
 	overflow: visible !important;
-
 }
 
 .dropdown-menu {
@@ -313,15 +317,17 @@
 	margin-top: 15px;
 	border-top: 1px solid #eee;
 	padding-top: 10px;
-	
 }
-.container .client-dropdown{
+
+.container .client-dropdown {
 	width: 100%;
 	display: flex;
 }
-.container .client-dropdown label{
+
+.container .client-dropdown label {
 	width: 15%;
 }
+
 .dropdown-box {
 	border: 1px solid #ccc;
 	padding: 10px;
@@ -329,23 +335,49 @@
 	display: inline-flex;
 }
 
-.dropdown-list {
-    display: grid;
-    z-index: 10;
-    background: #fff;
-    border: 1px solid #ccc;
-    position: absolute;
-    padding: 12px;
-    border-radius: 5px;
-	margin: 35px 0px; width: 30%
+.admin-login-container,
+.employee-login-container {
+	background-image: url("/assets/images/backgrounLogin.png") !important;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+	min-width: 100vw;
 }
-.dropdown-box .dropdown-list label{
-    margin: 5px 0px;
+
+.dropdown-list {
+	display: grid;
+	z-index: 10;
+	background: #fff;
+	border: 1px solid #ccc;
+	position: absolute;
+	padding: 12px;
+	border-radius: 5px;
+	margin: 35px 0px;
+	width: 30%
+}
+
+.dropdown-box .dropdown-list label {
+	margin: 5px 0px;
 	width: 50%
 }
-.goldenStar{
+
+.goldenStar {
 	color: #ffc107;
 }
+
+h3.icon-count1 i {
+	color: orangered;
+}
+
+h3.icon-count2 i {
+	color: #339933;
+}
+
+h3.icon-count3 i {
+	color: #0099ff;
+}
+
 @import "./avatar";
 @import "./button";
 @import "./icon-shape";

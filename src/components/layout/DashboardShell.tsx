@@ -190,8 +190,8 @@ const activeNav: NavKey = useMemo(() => {
               <Link className={navClass("dash")} href="/admin/dashboard"
                 onClick={closeMobile}
               >
-                <i className="ti ti-home" />
-                <span className="nav-text">Dashboard</span>
+                <i className="fa-solid fa-house"></i>
+                <span className="nav-text text-white">Dashboard</span>
               </Link>
             </li>
           
@@ -200,7 +200,8 @@ const activeNav: NavKey = useMemo(() => {
                 <Link className={navClass("emp")} href="/admin/dashboard/employees"
                   onClick={closeMobile}
                 >
-                  <i className="ti ti-users" />
+                  
+                   <i className="fa-solid fa-user-tie"></i>
                   <span className="nav-text">Employee Management</span>
                 </Link>
               </li>
@@ -209,7 +210,7 @@ const activeNav: NavKey = useMemo(() => {
           <li>
             <Link className={navClass("clientManagement")} href="/admin/dashboard/client-management"
                   onClick={closeMobile}>
-                     <i className="fa-solid fa-user-tie"></i>
+                     <i className="ti ti-users" />
                      <span className="nav-text">Client Management</span>
                   </Link>
           </li>
