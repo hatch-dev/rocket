@@ -50,12 +50,12 @@
 
 		&:hover {
 			color: $primary;
-			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgb(9 9 121 / 84%) 0%, rgba(6, 73, 163, 0.7) 11%, rgb(255 81 0 / 53%) 99%);
+			background: linear-gradient(90deg, #F44336 1%, #090979d6 0%, #f4433626 11%, #ff510082 99%);
 		}
 
 		&.active {
-			color: $primary;
-			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgb(9 9 121 / 84%) 0%, rgba(6, 73, 163, 0.7) 11%, rgb(255 81 0 / 53%) 99%);
+			// color: $primary;
+			background: linear-gradient(90deg, #F44336 1%, #090979d6 0%, #f4433626 11%, #ff510082 99%);
 		}
 
 		.ti {
@@ -302,7 +302,9 @@
 	border: none;
 	cursor: pointer;
 }
-
+.image img{
+	border-radius: 50;
+}
 .remove-small {
 	position: absolute;
 	right: 0;

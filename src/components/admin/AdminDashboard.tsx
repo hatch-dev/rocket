@@ -1,8 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 
 export function AdminDashboard() {
+  const [employees, setEmployees] = useState<any[]>([]);
+  const [clients, setClients] = useState<any[]>([]);
 
   const [counts, setCounts] = useState({
     employees: 0,
@@ -27,6 +30,20 @@ export function AdminDashboard() {
         toolRes.json(),
       ]);
 
+      // ===== SORT + TAKE LAST 5 =====
+      const latestEmployees = Array.isArray(empData)
+        ? [...empData].sort((a, b) => b.id - a.id).slice(0, 5)
+        : [];
+
+      const latestClients = Array.isArray(clientData)
+        ? [...clientData].sort((a, b) => b.id - a.id).slice(0, 5)
+        : [];
+
+      // ===== SET STATE =====
+      setEmployees(latestEmployees);
+      setClients(latestClients);
+
+      // ===== COUNTS (FULL DATA) =====
       const uniqueToolsCount = Array.isArray(toolData)
         ? new Set(toolData.map((t: any) => t.tool?.title)).size
         : 0;
@@ -53,7 +70,7 @@ export function AdminDashboard() {
       <h1>Welcome to Admin Dashboard</h1>
 
       <main className="content-admindashboard py-4">
-        <div className="container-fluid">
+        <div className="container-fluid mb-6">
           <div className="row g-3 mb-3">
 
             <div className="col-lg-4 col-12">
@@ -79,6 +96,79 @@ export function AdminDashboard() {
 
           </div>
         </div>
+
+        <div className="recent-employees-clients d-flex justify-content-between w-100">
+
+          <div className="recent-employees-container" style={{ width: "48%" }}>
+            <div className="title-recent-employees d-flex justify-content-between mb-3">
+              <h4>Recent Employees</h4>
+              <Link href={"/admin/dashboard/employees"}>View All<span className="mx-2"><i className="fa-solid fa-angle-right"></i></span></Link>
+            </div>
+
+            {employees.map((emp) => (
+              <div key={emp.id} className="recent-info">
+                <div className="info d-flex mb-2 border border-1 rounded p-2">
+
+                  <div className="image" style={{ width: "15%" }}>
+                    <img
+                      src={emp.profileImg || "/assets/images/slack-icon.png"}
+                      width="50"
+                      height="50"
+                    />
+                  </div>
+
+                  <div className="data d-flex justify-content-between align-items-center" style={{ width: "85%" }}>
+                    <div className="name-designation">
+                      <h5>{emp.firstname} {emp.lastname}</h5>
+                    </div>
+
+                    <div className="arrow">
+                      <i className="fa-solid fa-angle-right"></i>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ width: "1px", background: "#cccccc70" }}></div>
+
+          <div className="recent-clients-container" style={{ width: "48%" }}>
+            <div className="title-recent-client d-flex justify-content-between mb-3">
+              <h4>Recent Clients</h4>
+              <Link href={"/admin/dashboard/client-management"}>View All<span className="mx-2"><i className="fa-solid fa-angle-right"></i></span></Link>
+            </div>
+
+            {clients.map((client) => (
+              <div key={client.id} className="recent-info">
+                <div className="info d-flex mb-2 border border-1 rounded p-2">
+
+                  <div className="image" style={{ width: "15%" }}>
+                    <img
+                      src={client.icon || "/assets/images/slack-icon.png"}
+                      width="50"
+                      height="50"
+                    />
+                  </div>
+
+                  <div className="data d-flex justify-content-between align-items-center" style={{ width: "85%" }}>
+                    <div className="name-designation">
+                      <h5>{client.name}</h5>
+                    </div>
+
+                    <div className="arrow">
+                      <i className="fa-solid fa-angle-right"></i>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
       </main>
     </div>
   );

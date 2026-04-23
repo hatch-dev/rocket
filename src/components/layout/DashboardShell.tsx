@@ -181,6 +181,7 @@ const activeNav: NavKey = useMemo(() => {
             </span>
           </Link>
         </div>
+        
         <ul className="nav flex-column">
           <li className="px-4 py-2">
             <small className="nav-text">Main</small>
@@ -201,7 +202,7 @@ const activeNav: NavKey = useMemo(() => {
                   onClick={closeMobile}
                 >
                   
-                   <i className="fa-solid fa-user-tie"></i>
+                   <i className="fa-solid fa-user"></i>
                   <span className="nav-text">Employee Management</span>
                 </Link>
               </li>
@@ -210,14 +211,14 @@ const activeNav: NavKey = useMemo(() => {
           <li>
             <Link className={navClass("clientManagement")} href="/admin/dashboard/client-management"
                   onClick={closeMobile}>
-                     <i className="ti ti-users" />
+                     <i className="fa-solid fa-user-group"></i>
                      <span className="nav-text">Client Management</span>
                   </Link>
           </li>
            <li>
             <Link className={navClass("toolManagement")} href="/admin/dashboard/tool-management"
                   onClick={closeMobile}>
-                    <i className="fa-solid fa-screwdriver-wrench"></i>
+                   <i className="fa-solid fa-wrench"></i>
                      <span className="nav-text">Tool Management</span>
                   </Link>
           </li>
