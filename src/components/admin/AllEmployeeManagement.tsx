@@ -27,7 +27,7 @@ export function AllEmployeeManagement() {
   const [rows, setRows] = useState<EmployeeRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(5);
@@ -37,7 +37,7 @@ export function AllEmployeeManagement() {
     try {
       setError(null);
 
-      const res = await fetch("/api/employees", {
+      const res = await fetch(`${baseUrl}/api/employees`, {
         credentials: "include",
       });
 
@@ -74,7 +74,7 @@ export function AllEmployeeManagement() {
 
       if (!result.isConfirmed) return;
 
-      const res = await fetch(`/api/employees/${id}`, {
+      const res = await fetch(`${baseUrl}/api/employees/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

@@ -10,7 +10,7 @@ type Props = {
   employee: any;
 };
 
-
+const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export function EmployeeRocketDashboard({ clients, employee }: Props) {
   const { activeClient } = useEmployee();
   // ====== STATE =======
@@ -21,7 +21,7 @@ export function EmployeeRocketDashboard({ clients, employee }: Props) {
   useEffect(() => {
     if (!activeClient) return;
 
-    fetch(`/api/employees/tools?clientId=${activeClient}`)
+    fetch(`${baseUrl}/api/employees/tools?clientId=${activeClient}`)
       .then(res => res.json())
       .then(data => {
         setTools(data);
@@ -34,7 +34,7 @@ export function EmployeeRocketDashboard({ clients, employee }: Props) {
   useEffect(() => {
     if (!activeClient) return;
 
-    fetch(`/api/favorites?clientId=${activeClient}`)
+    fetch(`${baseUrl}/api/favorites?clientId=${activeClient}`)
       .then(res => res.json())
       .then(data => {
         const ids = data.map((f: any) => Number(f.toolLinkId));
@@ -45,7 +45,7 @@ export function EmployeeRocketDashboard({ clients, employee }: Props) {
 
   // toggle
   const toggleFavorite = async (link: any) => {
-  const res = await fetch("/api/favorites/toggle", {
+  const res = await fetch(`${baseUrl}/api/favorites/toggle`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

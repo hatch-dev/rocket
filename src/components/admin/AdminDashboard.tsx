@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
-
+const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export function AdminDashboard() {
   const [employees, setEmployees] = useState<any[]>([]);
   const [clients, setClients] = useState<any[]>([]);
-
   const [counts, setCounts] = useState({
     employees: 0,
     clients: 0,
@@ -19,9 +18,9 @@ export function AdminDashboard() {
     try {
 
       const [empRes, clientRes, toolRes] = await Promise.all([
-        fetch("/api/employees", { credentials: "include" }),
-        fetch("/api/clients", { credentials: "include" }),
-        fetch("/api/tools/list", { credentials: "include" }),
+        fetch(`${baseUrl}/api/employees`, { credentials: "include" }),
+        fetch(`${baseUrl}/api/clients`, { credentials: "include" }),
+        fetch(`${baseUrl}/api/tools/list`, { credentials: "include" }),
       ]);
 
       const [empData, clientData, toolData] = await Promise.all([
@@ -111,7 +110,7 @@ export function AdminDashboard() {
 
                   <div className="image" style={{ width: "15%" }}>
                     <img
-                      src={emp.profileImg || "/assets/images/slack-icon.png"}
+                      src={emp.profileImg || `${baseUrl}/assets/images/slack-icon.png`}
                       width="50"
                       height="50"
                     />
@@ -146,7 +145,7 @@ export function AdminDashboard() {
 
                   <div className="image" style={{ width: "15%" }}>
                     <img
-                      src={client.icon || "/assets/images/slack-icon.png"}
+                      src={client.icon || `${baseUrl}/assets/images/slack-icon.png`}
                       width="50"
                       height="50"
                     />

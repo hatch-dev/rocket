@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
-
+const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export function AdminLoginForm() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -23,7 +23,7 @@ export function AdminLoginForm() {
     }
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/admin/login", {
+      const res = await fetch(`${baseUrl}/api/auth/admin/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

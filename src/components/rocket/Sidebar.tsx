@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
+const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export function RocketSidebar({ clients, employee, activeClient, setActiveClient }: any) {
   const router = useRouter();
 
@@ -13,7 +13,7 @@ export function RocketSidebar({ clients, employee, activeClient, setActiveClient
   }, [clients]);
 
   const handleLogout = async () => {
-    await fetch("/api/auth/employee/logout", {
+    await fetch(`${baseUrl}/api/auth/employee/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -49,7 +49,7 @@ export function RocketSidebar({ clients, employee, activeClient, setActiveClient
 
         <div className="bottom1">
           <span className="user-card">
-            <img src={employee?.profileImg || "/images/avatar/default.png"} alt="profile" className="profile-img" width="50" height="50" />
+            <img src={employee?.profileImg || `${baseUrl}/images/avatar/default.png`} alt="profile" className="profile-img" width="50" height="50" />
             <span>
               {employee?.firstname} {employee?.lastname}
             </span>

@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { RocketHeader } from "@/components/rocket/Header";
 import { RocketSidebar } from "@/components/rocket/Sidebar";
 import { EmployeeContext } from "@/context/EmployeeContext";
-
+const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export default function EmployeeLayout({ children }: { children: ReactNode }) {
 
   // ================= STATE =================
@@ -14,7 +14,7 @@ export default function EmployeeLayout({ children }: { children: ReactNode }) {
 
   // ================= FETCH EMPLOYEE + CLIENTS =================
   useEffect(() => {
-    fetch("/api/employees/me", {
+    fetch(`${baseUrl}/api/employees/me`, {
       credentials: "include"
     })
       .then(res => res.json())
@@ -34,7 +34,7 @@ export default function EmployeeLayout({ children }: { children: ReactNode }) {
   
   return (
     <>
-      <link rel="stylesheet" href="/assets/css/style.css" />
+      {/* <link rel="stylesheet" href="/assets/css/style.css" /> */}
 
       <EmployeeContext.Provider
         value={{

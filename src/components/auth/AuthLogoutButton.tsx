@@ -1,13 +1,13 @@
 "use client";
 
 type Kind = "employee" | "admin";
-
+const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export function AuthLogoutButton({ kind }: { kind: Kind }) {
   async function logout() {
     const path =
       kind === "employee"
-        ? "/api/auth/employee/logout"
-        : "/api/auth/admin/logout";
+        ? `${baseUrl}/api/auth/employee/logout`
+        : `${baseUrl}/api/auth/admin/logout`;
     await fetch(path, { method: "POST", credentials: "include" });
     window.location.href = kind === "employee" ? "/" : "/admin";
   }

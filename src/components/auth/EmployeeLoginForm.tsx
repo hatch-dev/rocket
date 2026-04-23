@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
-
+const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export function EmployeeLoginForm() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -23,7 +23,7 @@ export function EmployeeLoginForm() {
     }
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/employee/login", {
+      const res = await fetch(`${baseUrl}/api/auth/employee/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -48,7 +48,7 @@ export function EmployeeLoginForm() {
           <div className="text-center mb-3">
             <Link href="/" className="mb-4 d-inline-flex align-items-center">
               <Image
-                src="/assets/images/rocket-logo.png"
+                src="/rocket/assets/images/rocket-logo.png"
                 alt=""
                 width={200}
                 height={50}

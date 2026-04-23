@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export  function ChatInput({ onSend }: any) {
   const [input, setInput] = useState("");
 
@@ -13,7 +13,7 @@ export  function ChatInput({ onSend }: any) {
     const userMessage = input;
     setInput("");
 
-    const res = await fetch("/api/chat", {
+    const res = await fetch(`${baseUrl}/api/chat`, {
       method: "POST",
       body: JSON.stringify({ message: userMessage }),
     });
