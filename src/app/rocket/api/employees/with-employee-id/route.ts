@@ -15,6 +15,6 @@ export async function GET() {
     },
     orderBy: { id: "asc" }
   });
-
+  console.log("employees id :", employees);
   return NextResponse.json(employees);
 }

@@ -87,6 +87,7 @@ export function AllClientManagement() {
         }
 
         setEmployees(data);
+        console.log("employees: ",data);
       })
       .catch((err) => {
         console.log("EMP FETCH ERROR:", err);
