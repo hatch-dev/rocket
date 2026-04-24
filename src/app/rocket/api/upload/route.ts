@@ -22,18 +22,18 @@ export async function POST(req: NextRequest) {
     // dynamic folder path
     const uploadDir = path.join(
       process.cwd(),
-      "../public/uploads",
+      "public/uploads",
       folder
     );
-
+ console.log("uploads direction", uploadDir);
     // create folder if not exists
     await import("fs").then(fs => {
-      console.log("uploads direction", uploadDir);
+     
       if (!fs.existsSync(uploadDir)) {
         fs.mkdirSync(uploadDir, { recursive: true });
       }
     });
-
+ console.log("uploads direction", uploadDir);
     const filepath = path.join(uploadDir, filename);
 
     await writeFile(filepath, buffer);
