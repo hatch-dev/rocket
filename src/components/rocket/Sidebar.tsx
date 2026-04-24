@@ -17,7 +17,7 @@ export function RocketSidebar({ clients, employee, activeClient, setActiveClient
       method: "POST",
       credentials: "include",
     });
-    router.push("/");
+    router.push("/rocket/");
     router.refresh();
   };
 
@@ -39,11 +39,11 @@ export function RocketSidebar({ clients, employee, activeClient, setActiveClient
         ) : (
           <li>No client is assigned</li>
         )}
-        <li onClick={() => router.push('/employee/chat')}>Chat</li>
+        <li onClick={() => router.push('/rocket/employee/chat')}>Chat</li>
       </ul>
 
       <div className="sidebar-employee-bottom">
-        <div className="" onClick={() => router.push('/employee/dashboard/favourite')} >
+        <div className="" onClick={() => router.push('/rocket/employee/dashboard/favourite')} >
           <i className="fa-solid fa-star goldenStar" /> Favoritter
         </div>
 

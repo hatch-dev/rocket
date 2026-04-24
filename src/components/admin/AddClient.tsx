@@ -115,7 +115,7 @@ export function ClientModel() {
                 icon: "success",
             });
 
-            router.push("/admin/dashboard/client-management");
+            router.push("/rocket/admin/dashboard/client-management");
 
         } catch (err) {
             console.log("Error:", err);
@@ -155,7 +155,7 @@ export function ClientModel() {
                 </div>
                 <div className="d-flex gap-2">
                     <button type="button" className="btn btn-secondary"
-                        onClick={() => router.push("/admin/dashboard/client-management") } >
+                        onClick={() => router.push("/rocket/admin/dashboard/client-management") } >
                         Cancel
                     </button>
                     <button type="submit" className="btn btn-primary" disabled={loading} >

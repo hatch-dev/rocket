@@ -153,7 +153,7 @@ const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
             type="button"
             className="btn btn-primary"
             onClick={() => {
-              router.push("/admin/dashboard/add-employee");
+              router.push("/rocket/admin/dashboard/add-employee");
             }}
           >
             Add employee
@@ -247,7 +247,7 @@ const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
                       className="btn btn-sm btn-outline-primary me-1"
                       onClick={() => {
                         router.push(
-                          `/admin/dashboard/add-employee?id=${r.id}`
+                          `/rocket/admin/dashboard/add-employee?id=${r.id}`
                         );
                       }}
                     >

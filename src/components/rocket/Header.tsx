@@ -5,7 +5,7 @@ export function RocketHeader({ employee }: any) {
   const router = useRouter();
   return (
     <div className="header">
-      <div className="logo" onClick={()=>{ router.push('/employee/dashboard')}}>
+      <div className="logo" onClick={()=>{ router.push('/rocket/employee/dashboard')}}>
         <img src={getAsset("images/rocket-logo.png")} alt="Rocket" />
         <span>by MOONLANDING</span>
       </div>

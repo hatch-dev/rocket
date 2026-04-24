@@ -195,7 +195,7 @@ export function AllClientManagement() {
 
           <button
             className="btn btn-primary"
-            onClick={() => router.push("/admin/dashboard/add-client")}
+            onClick={() => router.push("/rocket/admin/dashboard/add-client")}
           >
             Add Client
           </button>
@@ -285,7 +285,7 @@ export function AllClientManagement() {
                   <button
                     className="btn btn-sm btn-outline-primary me-1"
                     onClick={() =>
-                      router.push(`/admin/dashboard/add-client?id=${r.id}`)
+                      router.push(`/rocket/admin/dashboard/add-client?id=${r.id}`)
                     }
                   >
                     Edit

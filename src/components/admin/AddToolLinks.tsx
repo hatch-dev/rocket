@@ -179,7 +179,7 @@ export function AddToolLinks() {
                 return;
             }
 
-            router.push("/admin/dashboard/tool-management");
+            router.push("/rocket/admin/dashboard/tool-management");
             Swal.fire({
                 toast: true,
                 position: "bottom-end",
@@ -354,7 +354,7 @@ export function AddToolLinks() {
                 <button
                     type="button"
                     className="btn btn-secondary"
-                    onClick={() => router.push("/admin/dashboard/tool-management")}
+                    onClick={() => router.push("/rocket/admin/dashboard/tool-management")}
                 >
                     Cancel
                 </button>

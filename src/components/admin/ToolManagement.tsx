@@ -79,7 +79,7 @@ export function ToolManagement() {
   // For edit button
   const handleEdit = (tool: any) => {
     localStorage.setItem("editTool", JSON.stringify(tool));
-    router.push("/admin/dashboard/add-tool");
+    router.push("/rocket/admin/dashboard/add-tool");
   };
 
   // if no match found 
@@ -158,7 +158,7 @@ export function ToolManagement() {
               placeholder="Search..."
             />
           </SearchField>
-          <button type="button" className="btn btn-primary" onClick={() => { router.push("/admin/dashboard/add-tool"); }} >
+          <button type="button" className="btn btn-primary" onClick={() => { router.push("/rocket/admin/dashboard/add-tool"); }} >
             Add Tool
           </button></div>
 

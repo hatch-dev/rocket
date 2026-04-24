@@ -16,13 +16,13 @@ type DashboardShellProps = {
 export function DashboardShell({ children }: DashboardShellProps) {
   const pathname = usePathname();
 
-  const isEmployee = pathname.startsWith("/admin/dashboard/employees");
-  const isAdmin = pathname.startsWith("/admin/dashboard");
-  const isAddEmployee = pathname.startsWith("/admin/dashboard/add-employee");
-  const isToolManagement = pathname.startsWith("/admin/dashboard/tool-management");
-  const isClientManagement = pathname.startsWith("/admin/dashboard/client-management");
-  const isaddClient = pathname.startsWith("/admin/dashboard/add-client");
-  const isaddtool = pathname.startsWith("/admin/dashboard/add-tool");
+  const isEmployee = pathname.startsWith("/rocket/admin/dashboard/employees");
+  const isAdmin = pathname.startsWith("/rocket/admin/dashboard");
+  const isAddEmployee = pathname.startsWith("/rocket/admin/dashboard/add-employee");
+  const isToolManagement = pathname.startsWith("/rocket/admin/dashboard/tool-management");
+  const isClientManagement = pathname.startsWith("/rocket/admin/dashboard/client-management");
+  const isaddClient = pathname.startsWith("/rocket/admin/dashboard/add-client");
+  const isaddtool = pathname.startsWith("/rocket/admin/dashboard/add-tool");
 
 const activeNav: NavKey = useMemo(() => {
 
@@ -32,13 +32,13 @@ const activeNav: NavKey = useMemo(() => {
   if (isaddtool) return "toolManagement";
   if (isEmployee) return "emp";
   if (isAddEmployee) return "emp";
-  if (pathname === "/admin/dashboard") return "dash";
+  if (pathname === "/rocket/admin/dashboard") return "dash";
 
   return "dash";
 
 }, [pathname, isEmployee, isAddEmployee, isClientManagement, isToolManagement]);
 
-  const logoHref = isAdmin ? "/admin/dashboard" : "/admin/dashboard/employees";
+  const logoHref = isAdmin ? "/rocket/admin/dashboard" : "/rocket/admin/dashboard/employees";
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -173,7 +173,7 @@ const activeNav: NavKey = useMemo(() => {
           <Link href={logoHref} className="d-inline-flex align-items-center">
             <span className="logo-text ms-2">
               <Image
-                src="/assets/images/rocket-logo.png"
+                src="/rocket/assets/images/rocket-logo.png"
                 alt="Moonlanding"
                 width={170}
                 height={50}
@@ -188,7 +188,7 @@ const activeNav: NavKey = useMemo(() => {
           </li>
           
             <li>
-              <Link className={navClass("dash")} href="/admin/dashboard"
+              <Link className={navClass("dash")} href="/rocket/admin/dashboard"
                 onClick={closeMobile}
               >
                 <i className="fa-solid fa-house"></i>
@@ -198,7 +198,7 @@ const activeNav: NavKey = useMemo(() => {
           
             <>
               <li>
-                <Link className={navClass("emp")} href="/admin/dashboard/employees"
+                <Link className={navClass("emp")} href="/rocket/admin/dashboard/employees"
                   onClick={closeMobile}
                 >
                   
@@ -209,14 +209,14 @@ const activeNav: NavKey = useMemo(() => {
             </>
           <>
           <li>
-            <Link className={navClass("clientManagement")} href="/admin/dashboard/client-management"
+            <Link className={navClass("clientManagement")} href="/rocket/admin/dashboard/client-management"
                   onClick={closeMobile}>
                      <i className="fa-solid fa-user-group"></i>
                      <span className="nav-text">Client Management</span>
                   </Link>
           </li>
            <li>
-            <Link className={navClass("toolManagement")} href="/admin/dashboard/tool-management"
+            <Link className={navClass("toolManagement")} href="/rocket/admin/dashboard/tool-management"
                   onClick={closeMobile}>
                    <i className="fa-solid fa-wrench"></i>
                      <span className="nav-text">Tool Management</span>

@@ -150,7 +150,7 @@ export function EmployeeModal({
         return;
       }
 
-      router.push("/admin/dashboard/employees");
+      router.push("/rocket/admin/dashboard/employees");
 
     } catch (err) {
       console.log("Error:", err);
@@ -294,7 +294,7 @@ export function EmployeeModal({
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={() => router.push("/admin/dashboard/employees")}
+            onClick={() => router.push("/rocket/admin/dashboard/employees")}
           >
             Cancel
           </button>
