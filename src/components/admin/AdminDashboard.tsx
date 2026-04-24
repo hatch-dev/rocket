@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
-const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export function AdminDashboard() {
   const [employees, setEmployees] = useState<any[]>([]);
   const [clients, setClients] = useState<any[]>([]);
@@ -18,9 +17,9 @@ export function AdminDashboard() {
     try {
 
       const [empRes, clientRes, toolRes] = await Promise.all([
-        fetch(`${baseUrl}/api/employees`, { credentials: "include" }),
-        fetch(`${baseUrl}/api/clients`, { credentials: "include" }),
-        fetch(`${baseUrl}/api/tools/list`, { credentials: "include" }),
+        fetch(`/rocket/api/employees`, { credentials: "include" }),
+        fetch(`/rocket/api/clients`, { credentials: "include" }),
+        fetch(`/rocket/api/tools/list`, { credentials: "include" }),
       ]);
 
       const [empData, clientData, toolData] = await Promise.all([
@@ -101,7 +100,7 @@ export function AdminDashboard() {
           <div className="recent-employees-container" style={{ width: "48%" }}>
             <div className="title-recent-employees d-flex justify-content-between mb-3">
               <h4>Recent Employees</h4>
-              <Link href={"/admin/dashboard/employees"}>View All<span className="mx-2"><i className="fa-solid fa-angle-right"></i></span></Link>
+              <Link href={"/rocket/admin/dashboard/employees"}>View All<span className="mx-2"><i className="fa-solid fa-angle-right"></i></span></Link>
             </div>
 
             {employees.map((emp) => (
@@ -110,7 +109,7 @@ export function AdminDashboard() {
 
                   <div className="image" style={{ width: "15%" }}>
                     <img
-                      src={emp.profileImg || `${baseUrl}/assets/images/slack-icon.png`}
+                      src={emp.profileImg || `/assets/images/slack-icon.png`}
                       width="50"
                       height="50"
                     />
@@ -136,7 +135,7 @@ export function AdminDashboard() {
           <div className="recent-clients-container" style={{ width: "48%" }}>
             <div className="title-recent-client d-flex justify-content-between mb-3">
               <h4>Recent Clients</h4>
-              <Link href={"/admin/dashboard/client-management"}>View All<span className="mx-2"><i className="fa-solid fa-angle-right"></i></span></Link>
+              <Link href={"/rocket/admin/dashboard/client-management"}>View All<span className="mx-2"><i className="fa-solid fa-angle-right"></i></span></Link>
             </div>
 
             {clients.map((client) => (
@@ -145,7 +144,7 @@ export function AdminDashboard() {
 
                   <div className="image" style={{ width: "15%" }}>
                     <img
-                      src={client.icon || `${baseUrl}/assets/images/slack-icon.png`}
+                      src={client.icon || `/assets/images/slack-icon.png`}
                       width="50"
                       height="50"
                     />

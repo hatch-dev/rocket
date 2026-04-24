@@ -5,7 +5,7 @@ import { SearchField } from "@heroui/react";
 import Pagination from "@/components/pagination";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Swal from "sweetalert2";
-const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
+
 export type ClientRow = {
   id: number;
   name: string;
@@ -46,7 +46,7 @@ export function AllClientManagement() {
     try {
       setError(null);
 
-      const res = await fetch(`${baseUrl}/api/clients`, { credentials: "include" });
+      const res = await fetch(`/rocket/api/clients`, { credentials: "include" });
 
       if (!res.ok) {
         setError("Could not load clients.");
@@ -77,7 +77,7 @@ export function AllClientManagement() {
   useEffect(() => {
     load();
 
-    fetch(`${baseUrl}/api/employees/with-employee-id`, { credentials: "include" })
+    fetch(`/rocket/api/employees/with-employee-id`, { credentials: "include" })
       .then(async (res) => {
         const data = await res.json();
 
@@ -116,7 +116,7 @@ export function AllClientManagement() {
 
     if (!confirm.isConfirmed) return;
 
-    const res = await fetch(`${baseUrl}/api/clients/${clientId}`, {
+    const res = await fetch(`/rocket/api/clients/${clientId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -304,7 +304,7 @@ export function AllClientManagement() {
 
                       if (!confirm.isConfirmed) return;
 
-                      const res = await fetch(`${baseUrl}/api/clients/${r.id}`, {
+                      const res = await fetch(`/rocket/api/clients/${r.id}`, {
                         method: "DELETE",
                         credentials: "include",
                       });

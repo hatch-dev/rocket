@@ -103,7 +103,7 @@ export function EmployeeModal({
         uploadData.append("file", file);
         uploadData.append("folder", "employees");
 
-        const uploadRes = await fetch("/api/upload", {
+        const uploadRes = await fetch("/rocket/api/upload", {
           method: "POST",
           body: uploadData,
         });
@@ -130,8 +130,8 @@ export function EmployeeModal({
       console.log("Submitting body:", body);
 
       const url = initial?.id
-        ? `/api/employees/${initial.id}`
-        : `/api/employees`;
+        ? `/rocket/api/employees/${initial.id}`
+        : `/rocket/api/employees`;
 
       const method = initial?.id ? "PATCH" : "POST";
 

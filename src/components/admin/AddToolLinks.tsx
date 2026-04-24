@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export type ClientRow = {
     id: number;
     name: string;
@@ -45,7 +44,7 @@ export function AddToolLinks() {
            
             const editData = localStorage.getItem("editTool");
 
-            const res = await fetch(`${baseUrl}/api/clients`, { credentials: "include" });
+            const res = await fetch(`/rocket/api/clients`, { credentials: "include" });
             if (!res.ok) return;
 
             const data: ClientRow[] = await res.json();
@@ -160,7 +159,7 @@ export function AddToolLinks() {
         }
 
         try {
-            const res = await fetch(`${baseUrl}/api/tools`, {
+            const res = await fetch(`/rocket/api/tools`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -211,7 +210,7 @@ export function AddToolLinks() {
         formData.append("folder", "tool-icons");
         try {
             console.log("Uploading file:", file.name);
-            const res = await fetch(`${baseUrl}/api/upload`, {
+            const res = await fetch(`/rocket/api/upload`, {
                 method: "POST",
                 body: formData
             });

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useEmployee } from "@/context/EmployeeContext";
 import { RocketCard } from "@/components/rocket/Card";
-const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
+
 export function Favourite() {
   const { activeClient, setActiveClient, clients } = useEmployee();
   const [data, setData] = useState<any[]>([]);
@@ -12,7 +12,7 @@ export function Favourite() {
   useEffect(() => {
     const reload = () => {
       if (!activeClient) return;
-      fetch(`${baseUrl}/api/favorites?clientId=${activeClient}`)
+      fetch(`/rocket/api/favorites?clientId=${activeClient}`)
         .then(res => res.json())
         .then(favs => setData(favs));
     };

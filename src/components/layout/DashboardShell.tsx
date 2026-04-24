@@ -173,7 +173,7 @@ const activeNav: NavKey = useMemo(() => {
           <Link href={logoHref} className="d-inline-flex align-items-center">
             <span className="logo-text ms-2">
               <Image
-                src="/rocket/assets/images/rocket-logo.png"
+                src="/assets/images/rocket-logo.png"
                 alt="Moonlanding"
                 width={170}
                 height={50}

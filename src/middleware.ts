@@ -47,24 +47,24 @@ export async function middleware(request: NextRequest) {
   // ——— Public pages ———
   if (pathname === "/") {
     if (await verifyEmployee()) {
-      return NextResponse.redirect(new URL("/employee/dashboard", request.url));
+      return NextResponse.redirect(new URL("/rocket/employee/dashboard", request.url));
     }
     return NextResponse.next();
   }
 
   if (pathname === "/admin") {
     if (await verifyAdmin()) {
-      return NextResponse.redirect(new URL("/admin/dashboard", request.url));
+      return NextResponse.redirect(new URL("/rocket/admin/dashboard", request.url));
     }
     return NextResponse.next();
   }
 
-  if (pathname.startsWith("/api/auth")) {
+  if (pathname.startsWith("/rocket/api/auth")) {
     return NextResponse.next();
   }
 
   // ——— Employee area ———
-  if (pathname.startsWith("/employee")) {
+  if (pathname.startsWith("/rocket/employee")) {
     if (!(await verifyEmployee())) {
       return NextResponse.redirect(new URL("/", request.url));
     }
@@ -72,9 +72,9 @@ export async function middleware(request: NextRequest) {
   }
 
   // ——— Admin dashboard & employee APIs ———
-  if (pathname.startsWith("/admin/dashboard") || pathname.startsWith("/api/employees")) {
+  if (pathname.startsWith("/rocket/admin/dashboard") || pathname.startsWith("/rocket/api/employees")) {
     if (!(await verifyAdmin())) {
-      return NextResponse.redirect(new URL("/admin", request.url));
+      return NextResponse.redirect(new URL("/rocket/admin", request.url));
     }
     return NextResponse.next();
   }

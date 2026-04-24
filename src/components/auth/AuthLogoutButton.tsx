@@ -1,15 +1,14 @@
 "use client";
 
 type Kind = "employee" | "admin";
-const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export function AuthLogoutButton({ kind }: { kind: Kind }) {
   async function logout() {
     const path =
       kind === "employee"
-        ? `${baseUrl}/api/auth/employee/logout`
-        : `${baseUrl}/api/auth/admin/logout`;
+        ? `/rocket/api/auth/employee/logout`
+        : `/rocket/api/auth/admin/logout`;
     await fetch(path, { method: "POST", credentials: "include" });
-    window.location.href = kind === "employee" ? "/rocket/" : "/rocket/admin";
+    window.location.href = kind === "employee" ? "/" : "/rocket/admin";
   }
 
   return (

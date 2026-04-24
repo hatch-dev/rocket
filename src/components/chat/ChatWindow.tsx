@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { ChatInput } from "@/components/chat/ChatInput";
-const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export function ChatWindow({ userId, clientId, clientName }: any) {
 
   const [messages, setMessages] = useState<any[]>([]);
@@ -15,7 +14,7 @@ export function ChatWindow({ userId, clientId, clientName }: any) {
   //     try {
   //       console.log("Loading messages for client:", clientId);
 
-  //       const res = await fetch(`/api/chat?clientId=${clientId}&userId=${userId}`);
+  //       const res = await fetch(`/rocket/api/chat?clientId=${clientId}&userId=${userId}`);
   //       const data = await res.json();
 
   //       console.log("Loaded messages:", data);
@@ -43,7 +42,7 @@ useEffect(() => {
 
   const loadMessages = async () => {
     try {
-      const res = await fetch(`${baseUrl}/api/chat?clientId=${clientId}&userId=${userId}`);
+      const res = await fetch(`/rocket/api/chat?clientId=${clientId}&userId=${userId}`);
       const data = await res.json();
 
       setMessages(
@@ -73,7 +72,7 @@ useEffect(() => {
     ]);
 
     try {
-      const res = await fetch(`${baseUrl}/api/chat`, {
+      const res = await fetch(`/rocket/api/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "@/styles/style.scss";
 import "@/styles/globals.css";
-const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export const metadata: Metadata = {
   title: {
     default: "Rocket AI",
@@ -12,21 +11,21 @@ export const metadata: Metadata = {
   },
   description: "Rocket AI",
   icons: {
-    apple: `${baseUrl}/images/favicon_io/apple-touch-icon.png`,
+    apple: `/images/favicon_io/apple-touch-icon.png`,
     icon: [
       {
-        url: `${baseUrl}/images/favicon_io/favicon-32x32.png`,
+        url: `/images/favicon_io/favicon-32x32.png`,
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: `${baseUrl}/images/favicon_io/favicon-16x16.png`,
+        url: `/images/favicon_io/favicon-16x16.png`,
         sizes: "16x16",
         type: "image/png",
       },
     ],
   },
-  manifest: `${baseUrl}/images/favicon_io/site.webmanifest`,
+  manifest: `/images/favicon_io/site.webmanifest`,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

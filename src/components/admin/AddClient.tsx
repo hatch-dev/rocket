@@ -2,7 +2,6 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 export type ClientRow = {
     id: number;
     name: string;
@@ -23,7 +22,7 @@ export function ClientModel() {
         if (!clientId) return;
         const fetchClient = async () => {
             try {
-                const res = await fetch(`${baseUrl}/api/clients/${clientId}`, {
+                const res = await fetch(`/rocket/api/clients/${clientId}`, {
                     credentials: "include"
                 });
                 if (!res.ok) {
@@ -72,7 +71,7 @@ export function ClientModel() {
                 uploadData.append("file", file);
                 uploadData.append("folder", "clientIcon");
 
-                const uploadRes = await fetch(`${baseUrl}/api/upload`, {
+                const uploadRes = await fetch(`/rocket/api/upload`, {
                     method: "POST",
                     body: uploadData,
                 });
@@ -87,8 +86,8 @@ export function ClientModel() {
             };
 
             const url = initial?.id
-                ? `${baseUrl}/api/clients/${initial.id}`
-                : `${baseUrl}/api/clients`;
+                ? `/rocket/api/clients/${initial.id}`
+                : `/rocket/api/clients`;
 
             const method = initial?.id ? "PATCH" : "POST";
 

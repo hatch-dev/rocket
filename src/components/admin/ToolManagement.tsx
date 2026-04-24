@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { SearchField } from '@heroui/react';
 import Pagination from "@/components/pagination";
 import Swal from "sweetalert2";
-const baseUrl = process.env.NEXT_PUBLIC_ASSET_BASE;
 type ToolData = {
   client: {
     id: number;
@@ -29,7 +28,7 @@ export function ToolManagement() {
 
   const loadData = async () => {
     try {
-      const res = await fetch(`${baseUrl}/api/tools/list`);
+      const res = await fetch(`/rocket/api/tools/list`);
       const result = await res.json();
       setData(result);
     } catch (error) {
@@ -106,7 +105,7 @@ export function ToolManagement() {
     });
     if (!result.isConfirmed) return;
     try {
-      const res = await fetch(`${baseUrl}/api/tools/delete`, {
+      const res = await fetch(`/rocket/api/tools/delete`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
