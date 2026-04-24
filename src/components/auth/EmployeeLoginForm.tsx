@@ -46,7 +46,7 @@ export function EmployeeLoginForm() {
       <div className="employee-form " style={{ maxWidth: 420, width: "100%" }}>
         <div className="employee-login-form">
           <div className="text-center mb-3">
-            <Link href="/" className="mb-4 d-inline-flex align-items-center">
+            <Link href="/rocket/" className="mb-4 d-inline-flex align-items-center">
               <Image
                 src="/rocket/assets/images/rocket-logo.png"
                 alt=""
