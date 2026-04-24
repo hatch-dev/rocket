@@ -48,7 +48,7 @@ export function AdminLoginForm() {
           <div className="text-center mb-3">
            <span className="ms-2">
                 <Image
-                  src="/assets/images/rocket-logo.png"
+                  src="/rocket/assets/images/rocket-logo.png"
                   alt="Rocket AI"
                   width={200}
                   height={50}

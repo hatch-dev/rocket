@@ -9,7 +9,7 @@ export function AuthLogoutButton({ kind }: { kind: Kind }) {
         ? `${baseUrl}/api/auth/employee/logout`
         : `${baseUrl}/api/auth/admin/logout`;
     await fetch(path, { method: "POST", credentials: "include" });
-    window.location.href = kind === "employee" ? "/" : "/admin";
+    window.location.href = kind === "employee" ? "/rocket/" : "/rocket/admin";
   }
 
   return (

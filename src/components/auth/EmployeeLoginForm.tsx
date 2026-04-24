@@ -34,7 +34,7 @@ export function EmployeeLoginForm() {
         setError(data.error ?? "Sign in failed.");
         return;
       }
-      router.replace("/employee/dashboard");
+      router.replace("/rocket/employee/dashboard");
       router.refresh();
     } finally {
       setLoading(false);
@@ -71,22 +71,12 @@ export function EmployeeLoginForm() {
               <label htmlFor="email" className="form-label">
                 Email address
               </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                className="form-control"
-                placeholder="name@example.com"
-                required
-                autoFocus
-                autoComplete="email"
+              <input id="email" name="email" type="email" className="form-control" placeholder="name@example.com" required autoFocus autoComplete="email"
               />
             </div>
 
             <div className="mb-3">
-              <label
-                htmlFor="password"
-                className="form-label d-flex justify-content-between"
+              <label htmlFor="password" className="form-label d-flex justify-content-between"
               >
                 <span>Password</span>
               </label>
@@ -113,62 +103,5 @@ export function EmployeeLoginForm() {
         </div>
       </div>
     </div>
-
-    // <div className="login-wrapper">
-    //   <div className="login-container">
-    //     <div className="login-box">
-    //       <div className="login-left">
-    //         <img src="/assets/images/login_rocket-img.png" alt="Rocket" />
-    //       </div>
-    //       <div className="login-right " >
-    //         <form className="login-frm" noValidate onSubmit={onSubmit}>
-    //           <div className="form-group">
-    //             <label htmlFor="email" className="form-label">
-    //               Email address
-    //             </label>
-    //             <input
-    //               id="email"
-    //               name="email"
-    //               type="email"
-    //               className="form-control"
-    //               placeholder="name@example.com"
-    //               required
-    //               autoFocus
-    //               autoComplete="email"
-    //             />
-    //           </div>
-
-    //           <div className="form-group">
-    //             <label
-    //               htmlFor="password"
-    //               className="form-label d-flex justify-content-between"
-    //             >
-    //               <span>Password</span>
-    //             </label>
-    //             <input
-    //               id="password"
-    //               name="password"
-    //               type="password"
-    //               className="form-control"
-    //               placeholder="Password"
-    //               required
-    //               minLength={6}
-    //               autoComplete="current-password"
-    //             />
-    //           </div>
-
-    //           <button
-    //             className="btn btn-primary w-100"
-    //             type="submit"
-    //             disabled={loading}
-    //           >
-    //             {loading ? "Signing in…" : "Sign in"}
-    //           </button>
-    //         </form>
-    //       </div>
-    //     </div>
-    //   </div>
-
-    // </div>
   );
 }
