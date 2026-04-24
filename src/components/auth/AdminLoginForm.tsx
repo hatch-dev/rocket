@@ -34,7 +34,7 @@ export function AdminLoginForm() {
         setError(data.error ?? "Sign in failed.");
         return;
       }
-      router.replace("/admin/dashboard");
+      router.replace("/rocket/admin/dashboard");
       router.refresh();
     } finally {
       setLoading(false);
