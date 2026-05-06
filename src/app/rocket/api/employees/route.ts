@@ -55,7 +55,6 @@ export async function POST(request: Request) {
   const firstname = body.firstname?.trim();
   const lastname = body.lastname?.trim();
   const email = body.email?.trim().toLowerCase();
-  const password = body.password;
   const phone = body.phone?.trim() ?? "";
 
   const dob = body.dob ? new Date(body.dob) : null;
@@ -63,18 +62,25 @@ export async function POST(request: Request) {
   const address = body.address || null;
   const country = body.country || null;
   const profileImg = body.profileImg || null;
+  // Auto generate random password
+  const autoPassword =
+    Math.random().toString(36).slice(-4) +
+    Math.random().toString(36).slice(-4);
 
+  console.log("AUTO GENERATED PASSWORD:", autoPassword);
   const position = body.position || null;
 
   // validation
-  if (!firstname || !lastname || !email || !password || password.length < 6) {
+  if (!firstname || !lastname || !email) {
     return NextResponse.json(
-      { error: "Firstname, lastname, email and password (min 6 chars) required" },
+      { error: "Firstname, lastname and email required" },
       { status: 400 }
     );
   }
 
-  const hashedPassword = await hashPassword(password);
+  const hashedPassword = await hashPassword(autoPassword);
+
+  console.log("HASHED PASSWORD CREATED");
 
   try {
     const result = await prisma.$transaction(async (tx) => {
@@ -129,9 +135,9 @@ export async function POST(request: Request) {
 
             <div style="background:#e6623918; padding:12px; border-radius:6px; margin:15px 0; text-align:center;">
               <p><b>Email:</b> ${email}</p>
-              <p><b>Password:</b> ${password}</p>
+              <p><b>Password:</b> ${autoPassword}</p>
               <div style="text-align:center; margin:20px 0;">
-              <a href="http://localhost:3000/" 
+              <a href="http://localhost:3000/rocket/" 
                 style="background:#e66239; color:#fff; padding:10px 20px; text-decoration:none; border-radius:5px;">
                 Login
               </a>

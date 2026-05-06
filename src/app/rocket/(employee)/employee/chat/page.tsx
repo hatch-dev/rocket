@@ -14,9 +14,9 @@ export default function Page() {
   );
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "block", width: "100%" }}>
 
-      <div style={{ flex: 1 }}>
+      <div>
         <ChatWindow
           userId={employee?.id}
           clientId={activeClient}

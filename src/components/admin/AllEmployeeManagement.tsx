@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { SearchField } from "@heroui/react";
 import Pagination from "@/components/pagination";
+import { EmployeeContext } from "@/context/EmployeeContext";
 
 export type EmployeeRow = {
   id: number;
@@ -126,7 +127,7 @@ export function AllEmployeeManagement() {
   return (
     <div className="mb-10">
       <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-        <div>
+        <div className="employee-manage-title">
           <h2 className="fs-4 mb-1">Employees</h2>
           <p className="text-secondary mb-0 small">
             Add, edit, or remove employee accounts (employee role only).
@@ -137,16 +138,17 @@ export function AllEmployeeManagement() {
           <SearchField
             name="search"
             value={search}
+            
             onChange={(value: string) => {
               setSearch(value);
               setCurrentPage(1);
             }}
           >
-            <label>Search</label>
+           
             <SearchField.Input
-              className="w-[280px]"
-              placeholder="Search..."
-            />
+              className="searchemployee"
+              placeholder="Search Employee ..."
+            /><i className="fa-solid fa-magnifying-glass"></i>
           </SearchField>
 
           <button
@@ -156,7 +158,7 @@ export function AllEmployeeManagement() {
               router.push("/rocket/admin/dashboard/add-employee");
             }}
           >
-            Add employee
+            <i className="fa-solid fa-plus"></i>  Add employee
           </button>
         </div>
       </div>
@@ -167,7 +169,7 @@ export function AllEmployeeManagement() {
         </div>
       )}
 
-      <div className="m-4">
+      <div className="records-p-pg">
         <p>
           <select
             value={itemsPerPage}
@@ -182,7 +184,7 @@ export function AllEmployeeManagement() {
             <option value={20}>20</option>
             <option value={25}>25</option>
           </select>{" "}
-          Records Per Page
+          Rows Per Page
         </p>
       </div>
 
@@ -195,7 +197,7 @@ export function AllEmployeeManagement() {
               <th>Email</th>
               <th>Phone</th>
               <th>D-O-B</th>
-              <th>Gender</th>
+              {/* <th>Gender</th> */}
               <th>Address</th>
               <th>Country</th>
               <th className="text-end">Actions</th>
@@ -226,18 +228,15 @@ export function AllEmployeeManagement() {
                     )}
                   </td>
 
-                  <td>
-                    {r.firstname} {r.lastname}
-                  </td>
+                  <td> {r.firstname} {r.lastname} </td>
 
                   <td>{r.email}</td>
-                  <td>{r.phone}</td>
-                  <td>
-                    {r.dob
+                  <td>+{r.phone}</td>
+                  <td> {r.dob
                       ? new Date(r.dob).toLocaleDateString()
                       : "-"}
                   </td>
-                  <td>{r.gender}</td>
+                  {/* <td>{r.gender}</td> */}
                   <td>{r.address}</td>
                   <td>{r.country}</td>
 
@@ -251,7 +250,7 @@ export function AllEmployeeManagement() {
                         );
                       }}
                     >
-                      Edit
+                     <i className="fa-solid fa-pen"></i>
                     </button>
 
                     <button
@@ -261,7 +260,7 @@ export function AllEmployeeManagement() {
                         handleDelete(r.id);
                       }}
                     >
-                      Delete
+                     <i className="fa-regular fa-trash-can"></i>
                     </button>
                   </td>
                 </tr>

@@ -121,50 +121,7 @@ const activeNav: NavKey = useMemo(() => {
 
         <div className="d-flex align-items-center gap-2">
           <AuthLogoutButton kind={isAdmin ? "admin" : "employee"} />
-          <ul className="list-unstyled d-flex align-items-center mb-0 gap-1">
-            <li className="dropdown">
-             
-            </li>
-            <li className="ms-3 dropdown">
-              <a
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="/images/avatar/avatar-1.jpg"
-                  alt=""
-                  className="avatar avatar-sm rounded-circle"
-                />
-              </a>
-              <div
-                className="dropdown-menu dropdown-menu-end p-0"
-                style={{ minWidth: 200 }}
-              >
-                <div>
-                  
-                  <div className="p-3 d-flex flex-column gap-1 small lh-lg">
-                    <a href="#!">
-                      <span>Home</span>
-                    </a>
-                    <a href="#!">
-                      <span> Inbox</span>
-                    </a>
-                    <a href="#!">
-                      <span> Chat</span>
-                    </a>
-                    <a href="#!">
-                      <span> Activity</span>
-                    </a>
-                    <a href="#!">
-                      <span> Account Settings</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
+          
         </div>
       </nav>
 

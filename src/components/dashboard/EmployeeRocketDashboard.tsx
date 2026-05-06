@@ -73,7 +73,7 @@ export function EmployeeRocketDashboard({ clients, employee }: Props) {
 
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper-1">
         <div className="content-employee">
           <div className="title">Velkommen til Rocket!</div>
           <div className="subtitle">

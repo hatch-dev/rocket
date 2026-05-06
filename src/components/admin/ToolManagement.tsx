@@ -208,27 +208,32 @@ export function ToolManagement() {
                 </td>
                 <td>
                   <select name="" id="">
-                  {/* <option value="selected_clients">Assigned Clients</option> */}
+                    {/* <option value="selected_clients">Assigned Clients</option> */}
 
-                    {tool.clients.map((client: any, i: number) => (  
-                      
-                      <option value="{i}" className="">{client.name}</option>
+                    {tool.clients.map((client: any, i: number) => (
+                      <option
+                        key={client.id || i}
+                        value={client.id}
+                        className=""
+                      >
+                        {client.name}
+                      </option>
                     ))}
                   </select>
-                  
+
                 </td>
                 <td>
                   <button
                     className="btn btn-sm btn-outline-primary me-1"
                     onClick={() => handleEdit(tool)}
                   >
-                    Edit
+                    <i className="fa-solid fa-pen"></i>
                   </button>
                   <button
                     className="btn btn-sm btn-outline-danger"
                     onClick={() => handleDelete(tool.title)}
                   >
-                    Delete
+                    <i className="fa-regular fa-trash-can"></i>
                   </button>
                 </td>
               </tr>

@@ -55,13 +55,11 @@ export default function EmployeeLayout({ children }: { children: ReactNode }) {
             setActiveClient={setActiveClient}
           />
 
-          <div className="content-employee">
-
-            
+          {/* <div className="content-employee"> */}
 
             {children}
 
-          </div>
+          {/* </div> */}
 
         </div>
 

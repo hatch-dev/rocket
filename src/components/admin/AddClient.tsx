@@ -2,6 +2,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+
 export type ClientRow = {
     id: number;
     name: string;
@@ -42,7 +43,6 @@ export function ClientModel() {
         fetchClient();
     }, [clientId]);
 
-
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setError(null);
@@ -55,9 +55,7 @@ export function ClientModel() {
         }
         const confirm = await Swal.fire({
             title: initial ? "Are you sure to update?" : "Are you sure to create?",
-            text: initial
-                ? "Client will be updated"
-                : "New client will be created",
+            text: initial ? "Client will be updated" : "New client will be created",
             icon: "warning",
             showCancelButton: true,
             confirmButtonText: "Yes",
@@ -70,12 +68,10 @@ export function ClientModel() {
                 const uploadData = new FormData();
                 uploadData.append("file", file);
                 uploadData.append("folder", "clientIcon");
-
                 const uploadRes = await fetch(`/rocket/api/upload`, {
                     method: "POST",
                     body: uploadData,
                 });
-
                 const uploadResult = await uploadRes.json();
                 imagePath = uploadResult.path;
             }
@@ -129,39 +125,96 @@ export function ClientModel() {
     }
 
     if (loadingData) return <p>Loading...</p>;
+
     return (
-        <div className="container mt-4">
-            <h2 className="mb-3">
-                {initial ? "Edit Client" : "Add Client"}
-            </h2>
-            {error && <div className="alert alert-danger">{error}</div>}
-            <form onSubmit={onSubmit}>
-                <div className="row">
-                    <div className="col-md-6 mb-3">
-                        <label> Icon</label>
-                        {initial?.icon && (
-                            <div className="mb-2">
-                                <img src={initial.icon} style={{ width: "80px", height: "80px" }} />
+        <div className="cm-page">
+
+            {/* ── HEADER ── */}
+            <div className="cm-header">
+                <div className="cm-header-text">
+                    <h2>{initial ? "Edit Client" : "Add Client"}</h2>
+                    <p>
+                        {initial
+                            ? "Update the client details below."
+                            : "Enter client details to add a new client to the system."}
+                    </p>
+                </div>
+               
+            </div>
+
+            {/* ── CARD ── */}
+            <div className="cm-card">
+                {error && <div className="alert alert-danger mb-4">{error}</div>}
+
+                <form onSubmit={onSubmit}>
+                    <div className="row g-4">
+
+                        {/* Icon column */}
+                        <div className="col-md-6">
+                            <div className="cm-field-label">
+                                <div className="cm-field-icon">
+                                    <i className="fa-regular fa-image"></i>
+                                </div>
+                                Icon
                             </div>
-                        )}
-                        <input type="file" name="file" className="form-control" />
+
+                            {initial?.icon && (
+                                <img
+                                    src={initial.icon}
+                                    alt="Current icon"
+                                    className="cm-icon-preview"
+                                />
+                            )}
+
+                            <div className="cm-dropzone">
+                                <input type="file" name="file" accept="image/*" />
+                                <i className="fa-solid fa-cloud-arrow-up"></i>
+                                <div className="cm-dropzone-text">Choose a file or drag &amp; drop</div>
+                                <div className="cm-dropzone-hint">PNG, JPG or SVG (max. 2MB)</div>
+                            </div>
+                        </div>
+
+                        {/* Name column */}
+                        <div className="col-md-6">
+                            <div className="cm-field-label">
+                                <div className="cm-field-icon">
+                                    <i className="fa-regular fa-user"></i>
+                                </div>
+                                Name
+                            </div>
+
+                            <input
+                                name="name"
+                                defaultValue={initial?.name || ""}
+                                className="cm-name-input"
+                                placeholder="Enter client name"
+                                required
+                            />
+                        </div>
                     </div>
-                    <div className="col-md-6 mb-3">
-                        <label> Name</label>
-                        <input name="name" defaultValue={initial?.name || ""} className="form-control"
-                            required />
+
+                    <hr className="cm-divider" />
+
+                    {/* Action Buttons */}
+                    <div className="cm-actions">
+                        <button
+                            type="button"
+                            className="cm-btn-cancel"
+                            onClick={() => router.push("/rocket/admin/dashboard/client-management")}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="cm-btn-save"
+                            disabled={loading}
+                        >
+                            <i className="fa-solid fa-floppy-disk"></i>
+                            {loading ? "Saving..." : "Save Client"}
+                        </button>
                     </div>
-                </div>
-                <div className="d-flex gap-2">
-                    <button type="button" className="btn btn-secondary"
-                        onClick={() => router.push("/rocket/admin/dashboard/client-management") } >
-                        Cancel
-                    </button>
-                    <button type="submit" className="btn btn-primary" disabled={loading} >
-                        {loading ? "Saving..." : "Save"}
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     );
 }

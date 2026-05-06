@@ -4,18 +4,6 @@
     width: 100%;
 }
 
-
-/* .admin-login-container{
-    background-image: url("/assets/images/backgrounLogin.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-     min-height: 100vh;
-} */
-.wrapper{
-    display:flex;
-}
-
 .login-wrapper {
     display: flex;
     align-items: center;
@@ -98,12 +86,16 @@
 }
 /* Start Dashboard CSS */
 .header {
-    height: 75px;
-    display: flex;
-    align-items: center;
+    background: linear-gradient(90deg, #121929 0%, #3f578f 100%);
     justify-content: space-between;
+    align-items: center;
+    height: 75px;
     padding: 0 20px;
-    background: linear-gradient(90deg, #121929 0%, #3F578F 100%);
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
 }
 .content-employee {
     padding: 30px;
@@ -287,13 +279,14 @@
     gap: 15px;
 }
 .sidebar-employee {
-    width: 320px;
-    color: #fff;
-    background: linear-gradient(176.29deg, #121929 3.04%, #1E2E52 54.56%);
-    padding: 30px 20px;
-    display: flex;
+   color: #fff;
+    background: linear-gradient(176.29deg, #121929 3.04%, #1e2e52 54.56%);
     flex-direction: column;
     justify-content: space-between;
+    width: 320px;
+    padding: 30px 20px;
+    display: flex;
+    margin-top: 75px;
 }
 .sidebar-employee-bottom {
     position: sticky;

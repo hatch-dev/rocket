@@ -11,7 +11,10 @@
 	display: none;
 	z-index: 1030;
 }
-
+.wrapper-1 {
+     width: 100%;
+    margin-top: 75px;
+}
 .overlay.show {
 	display: block;
 }
@@ -22,9 +25,11 @@
 	background: #020f43;
 	color: #fff;
 }
-.nav-link.active i{
+
+.nav-link.active i {
 	color: $primary;
 }
+
 .sidebar {
 	width: 240px;
 	transition: width .3s, left .3s;
@@ -302,9 +307,11 @@
 	border: none;
 	cursor: pointer;
 }
-.image img{
+
+.image img {
 	border-radius: 50;
 }
+
 .remove-small {
 	position: absolute;
 	right: 0;
@@ -330,13 +337,6 @@
 	width: 15%;
 }
 
-.dropdown-box {
-	border: 1px solid #ccc;
-	padding: 10px;
-	width: 40%;
-	display: inline-flex;
-}
-
 .admin-login-container,
 .employee-login-container {
 	background-image: url("/assets/images/backgrounLogin.png") !important;
@@ -345,23 +345,6 @@
 	background-repeat: no-repeat;
 	min-height: 100vh;
 	min-width: 100vw;
-}
-
-.dropdown-list {
-	display: grid;
-	z-index: 10;
-	background: #fff;
-	border: 1px solid #ccc;
-	position: absolute;
-	padding: 12px;
-	border-radius: 5px;
-	margin: 35px 0px;
-	width: 30%
-}
-
-.dropdown-box .dropdown-list label {
-	margin: 5px 0px;
-	width: 50%
 }
 
 .goldenStar {

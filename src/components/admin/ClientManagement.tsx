@@ -289,7 +289,7 @@ export function AllClientManagement() {
                       router.push(`/rocket/admin/dashboard/add-client?id=${r.id}`)
                     }
                   >
-                    Edit
+                     <i className="fa-solid fa-pen"></i>
                   </button>
 
                   <button
@@ -330,7 +330,7 @@ export function AllClientManagement() {
                       load();
                     }}
                   >
-                    Delete
+                    <i className="fa-regular fa-trash-can"></i>
                   </button>
                 </td>
               </tr>
